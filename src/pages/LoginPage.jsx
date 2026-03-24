@@ -6,7 +6,7 @@ import { setCredentials } from '../features/Auth/authSlice'
 import { loginRequest } from '../api/authApi'
 import { useNavigate } from 'react-router-dom'
 import { Formik, useFormik } from 'formik'
-import { loginSchema } from '../validation/schemas/LoginSchemas'
+import { loginSchema } from '../validation/schemas/loginSchemas'
 import {
     Box,
     TextField,
