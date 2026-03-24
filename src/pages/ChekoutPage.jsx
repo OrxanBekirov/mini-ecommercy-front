@@ -14,7 +14,7 @@ import {
 } from "@mui/material";
 import { toast } from "react-toastify";
 
-import { chekoutSchema } from "../validation/schemas/checkOutSchemas";
+import { chekoutSchema } from '../validation/schemas/checkoutSchemas';
 import { createMyOrderThunk } from "../features/order/orderSlice";
 import { createCheckoutSessionThunk } from "../features/payments/payment.Slice";
 
