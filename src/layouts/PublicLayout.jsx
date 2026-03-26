@@ -14,7 +14,7 @@ function PublicLayout() {
         <>
             <Header />
 
-            <Box sx={{ p: 2 }}>
+            <Box sx={{ p: { xs: 1, sm: 2, md: 3 } }}>
                 <Outlet />
             </Box>
             <Footer />
