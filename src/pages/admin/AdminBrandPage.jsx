@@ -35,17 +35,22 @@ const AdminBrandsPage = () => {
     };
 
     const handleCreate = async (values) => {
-        await dispatch(createAdminBrand(values));
+        const payload = {
+            name: values.name, // brand form input-u Name ilə map et
+        };
+        await dispatch(createAdminBrand(payload));
         setShowForm(false);
     };
 
     const handleUpdate = async (values) => {
         if (!editingBrand) return;
-
+        const payload = {
+            name: values.name, // ⚡ Name field mütləq
+        };
         await dispatch(
             updateAdminBrand({
                 id: editingBrand.id,
-                dto: values,
+                dto: payload,
             })
         );
 
