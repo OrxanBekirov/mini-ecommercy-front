@@ -35,11 +35,25 @@ const AdminCategoriesPage = () => {
         dispatch(deleteAdminCategory(id));
     };
 
-    const handleSubmit = (values) => {
+    const handleSubmit = async (values) => {
+        // API-nin gözlədiyi təmiz obyekt (DTO)
+        const payload = {
+            name: values.name,
+            // Əgər kateqoriyanın başqa sahələri varsa (məs: description, parentId), onları da bura əlavə edin
+            // Məsələn: description: values.description 
+        };
+
         if (editingCategory) {
-            dispatch(updateAdminCategory({ id: editingCategory.id, dto: values }));
+            // Yeniləmə (Update)
+            await dispatch(
+                updateAdminCategory({
+                    id: editingCategory.id,
+                    dto: payload,
+                })
+            );
         } else {
-            dispatch(createAdminCategory(values));
+            // Yeni yaratma (Create)
+            await dispatch(createAdminCategory(payload));
         }
 
         setEditingCategory(null);
