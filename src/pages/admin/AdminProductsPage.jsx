@@ -59,23 +59,22 @@ const AdminProductsPage = () => {
         if (!window.confirm("Məhsulu silmək istədiyinizə əminsiniz?")) return;
         await dispatch(deleteAdminProduct(id));
     };
-
     const handleCreateProduct = async (values) => {
+        // API-nin gözlədiyi təmiz DTO
         const payload = {
             name: values.name,
             description: values.description,
-            price: Number(values.price), // Mütləq rəqəmə çevir
-            stockQuantity: Number(values.stock),  // Mütləq rəqəmə çevir
-            categoryId: values.categoryId,
-            brandId: values.brandId,
+            price: Number(values.price),    // String gəlirsə rəqəmə çeviririk
+            stock: Number(values.stock),    // String gəlirsə rəqəmə çeviririk
+            categoryId: values.categoryId,  // Seçilən kateqoriya ID-si
+            brandId: values.brandId,        // Seçilən brend ID-si
         };
 
-        console.log("Create Payload:", payload); // Debug üçün log
+        console.log("Yaradılan Məhsul:", payload); // Bazaya nə getdiyini yoxlamaq üçün
 
         await dispatch(createAdminProduct(payload));
         setShowForm(false);
     };
-
     const handleUpdateProduct = async (values) => {
         if (!editingProduct) return;
 
@@ -83,17 +82,15 @@ const AdminProductsPage = () => {
             name: values.name,
             description: values.description,
             price: Number(values.price),
-            stockQuantity: Number(values.stock),
+            stock: Number(values.stock),
             categoryId: values.categoryId,
             brandId: values.brandId,
         };
 
-        console.log("Update Payload:", payload);
-
         await dispatch(
             updateAdminProduct({
-                id: editingProduct.id,
-                dto: payload,
+                id: editingProduct.id, // ID ayrıca gedir
+                dto: payload,          // Məlumatlar obyekt daxilində
             })
         );
 
