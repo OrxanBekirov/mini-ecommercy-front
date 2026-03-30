@@ -61,17 +61,39 @@ const AdminProductsPage = () => {
     };
 
     const handleCreateProduct = async (values) => {
-        await dispatch(createAdminProduct(values));
+        const payload = {
+            name: values.name,
+            description: values.description,
+            price: Number(values.price), // Mütləq rəqəmə çevir
+            stock: Number(values.stock), // Mütləq rəqəmə çevir
+            categoryId: values.categoryId,
+            brandId: values.brandId,
+        };
+
+        console.log("Create Payload:", payload); // Debug üçün log
+
+        await dispatch(createAdminProduct(payload));
         setShowForm(false);
     };
 
     const handleUpdateProduct = async (values) => {
         if (!editingProduct) return;
 
+        const payload = {
+            name: values.name,
+            description: values.description,
+            price: Number(values.price),
+            stock: Number(values.stock),
+            categoryId: values.categoryId,
+            brandId: values.brandId,
+        };
+
+        console.log("Update Payload:", payload);
+
         await dispatch(
             updateAdminProduct({
                 id: editingProduct.id,
-                dto: values,
+                dto: payload,
             })
         );
 
