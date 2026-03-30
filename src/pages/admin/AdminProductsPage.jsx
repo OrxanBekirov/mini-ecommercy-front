@@ -65,7 +65,7 @@ const AdminProductsPage = () => {
             name: values.name,
             description: values.description,
             price: Number(values.price), // Mütləq rəqəmə çevir
-            stock: Number(values.stock), // Mütləq rəqəmə çevir
+            stockQuantity: Number(values.stock),  // Mütləq rəqəmə çevir
             categoryId: values.categoryId,
             brandId: values.brandId,
         };
@@ -83,7 +83,7 @@ const AdminProductsPage = () => {
             name: values.name,
             description: values.description,
             price: Number(values.price),
-            stock: Number(values.stock),
+            stockQuantity: Number(values.stock),
             categoryId: values.categoryId,
             brandId: values.brandId,
         };
